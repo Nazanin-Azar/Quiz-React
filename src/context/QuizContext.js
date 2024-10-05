@@ -82,7 +82,7 @@ function QuizProvider({ children }) {
   );
 
   useEffect(function () {
-    fetch("https://185.80.196.19/que/")
+    fetch("https://alohpanel.ir/que/questions")
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "dataReceived", payload: data });
