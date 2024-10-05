@@ -82,7 +82,7 @@ function QuizProvider({ children }) {
   );
 
   useEffect(function () {
-    fetch("http://localhost:9000/questions")
+    fetch("https://185.80.196.19/que/")
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "dataReceived", payload: data });
