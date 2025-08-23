@@ -81,14 +81,15 @@ function QuizProvider({ children }) {
     0
   );
 
-  useEffect(function () {
-    fetch("https://alohpanel.ir/que/questions")
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "dataReceived", payload: data });
-      })
-      .catch((err) => dispatch({ type: "dataFailed" }));
-  }, []);
+   useEffect(() => {
+     fetch("/questions.json") 
+    .then((res) => res.json())
+    .then((data) => {
+      const payload = Array.isArray(data) ? data : data.questions;
+      dispatch({ type: "dataReceived", payload });
+    })
+    .catch(() => dispatch({ type: "dataFailed" }));
+}, []);
 
   return (
     <QuizContext.Provider
